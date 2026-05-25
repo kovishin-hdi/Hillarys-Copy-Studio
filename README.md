@@ -46,7 +46,7 @@ Claude will diagnose emotional state → identify trust risk → pick the matrix
 ### Option 2 — Claude Code (terminal / developers)
 
 ```bash
-git clone <this-repo-url> ~/.claude/skills/hillarys-copy-studio
+git clone <(https://github.com/kovishin-hdi/Hillarys-Copy-Studio)> ~/.claude/skills/hillarys-copy-studio
 ```
 
 The skill will be available in any Claude Code session.
