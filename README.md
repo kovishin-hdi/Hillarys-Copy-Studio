@@ -46,7 +46,7 @@ Claude will diagnose emotional state → identify trust risk → pick the matrix
 ### Option 2 — Claude Code (terminal / developers)
 
 ```bash
-git clone <(https://github.com/kovishin-hdi/Hillarys-Copy-Studio)> ~/.claude/skills/hillarys-copy-studio
+git clone <this-repo-url> ~/.claude/skills/hillarys-copy-studio
 ```
 
 The skill will be available in any Claude Code session.
@@ -82,6 +82,8 @@ hillarys-copy-studio/
     ├── the-real-content-matrix.md        ← 28-cell AIDA × Source lookup table
     ├── the-real-content-matrix.png       ← Visual poster of the matrix
     ├── service-brand-playbook.md         ← Six moments, three spaces, choreography
+    ├── lead-lifecycle-triggers.md        ← Pre-order lead journey (enquiry → qualification → appointment)
+    ├── crm-lifecycle-triggers.md         ← 12 automated post-order WhatsApp triggers (order → install)
     ├── content-system-summary.md         ← Four-layer content stack + 90-day rotation
     ├── copy-system.md                    ← Core definition of the brand
     ├── copy-studio-agent.md              ← Agent identity statement

@@ -6,6 +6,37 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [1.2.0] — 2026-07-07
+
+Brings the repository up to date with the full customer-journey lifecycle. The post-order library (previously local-only) is now published, upgraded to v1.1 with marketing's review applied, and joined by a new pre-order lead-journey library — so the skill now covers enquiry → qualification → appointment → consultation → order → production → dispatch → installation, end to end.
+
+### Added
+- `references/lead-lifecycle-triggers.md` **(new)** — the **pre-order lead journey**: the prospect half of the WhatsApp journey, from first enquiry to a booked home consultation.
+  - Lead sources: website form (L1) and WhatsApp-button fresh lead (L2, with a Bangalore serviceability/pincode gate).
+  - Qualification sequence (L3): property → windows → style → site readiness, one question per message.
+  - Site-not-ready hold (L4) with Experience-Centre offer and the ≤15-day consultation-visit case.
+  - Lead-status triggers L5–L13: RNR / Unable to Contact, Call Back / Follow-up-Later, Appointment Booked, same-day reminder, Site Note Ready–Future Requirement (with early delay-nudge logic), Store Visit, Not Interested, Less than ₹20K, and existing-customer inbound menus by status.
+  - The CRM mechanics the copy depends on: the **30-minute follow-up rule**, the **running Notes summary**, and the **smart-skip rule**.
+  - Three pre-order doctrine rules: **guide-not-gate, honesty-over-capture, no-silence**.
+- `references/` is now committed as loose files at the repository root (previously shipped only inside the packaged zip), so the operating stack is browsable and diffable on GitHub and `git clone` yields a working skill.
+
+### Changed
+- `references/crm-lifecycle-triggers.md` → **v1.1**, applying the marketing team's review of the 12 post-order triggers:
+  - T1: roadmap step 1 now names the **50% advance**; `*One important note:*` bolded.
+  - Two-step lookahead standardised across T2–T11 from `Next:` / `Then:` to a bolded, numbered **`*Here are the NEXT STEPS:*`** header (content unchanged — still exactly two steps).
+  - T2 access instruction added ("kindly" softened to "please" per the rejection list); T6 craft-line rewrite (**resolves the old craft-number open decision**); T7 "fabric stitching is complete"; T8 "Crafted, measured, and checked" + "one final step — the balance payment."
+  - T12: new craft line; added Toll-Free **+91-7795830298**; added the **{Link} referral**, reconciled with the referral rule (Voice of Brand §16) — "share the Hillarys experience" + "token of appreciation," never "refer and earn."
+  - New merge variable `{Link}`; new Open Decision on the referral-token definition.
+- `SKILL.md`: §3 operating stack now lists the pre-order and post-order WhatsApp libraries as distinct sources of truth; §6 reframed around the two halves of the journey and the consultation seam; §12 reference index updated.
+- `README.md`: repository structure lists `lead-lifecycle-triggers.md`.
+- `hillarys-copy-studio.zip` refreshed to match the current skill.
+
+### Notes
+- The two lifecycle libraries now cover the full customer journey end to end.
+- Open decisions are recorded in each file for marketing to close (canonical site-completion timeline set and the referral-token definition are the load-bearing ones).
+
+---
+
 ## [1.1.0] — 2026-05-25
 
 ### Added
