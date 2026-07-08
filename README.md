@@ -18,6 +18,83 @@ A **skill** is a reusable instruction set that teaches Claude how to behave for 
 
 ---
 
+## The customer journey, end to end
+
+The skill now models the **whole customer relationship** — from a stranger's first enquiry to the day their curtains are fitted — as two automated WhatsApp journeys that meet at the home consultation. The **lead journey** guides a *prospect* to a booked consultation; the **order journey** carries a *paying customer* calmly through the wait. Same promise throughout: *"we handle this so you don't have to."*
+
+```
+  ┌─ PRE-ORDER · Lead journey (prospect) ──────────────────────┐
+  │  Enquiry → Serviceability check → Qualification →           │
+  │  Appointment booked → (re-engagement · holds)               │  references/lead-lifecycle-triggers.md
+  └──────────────────────────────┬──────────────────────────────┘
+                                 │
+                      ╔══════════▼═══════════╗
+                      ║  THE SEAM            ║
+                      ║  Home consultation   ║   visit → order → 50% advance
+                      ╚══════════╤═══════════╝
+                                 │
+  ┌──────────────────────────────▼──────────────────────────────┐
+  │  Order confirmed → Check-measure → Quotation → Production →  │
+  │  Quality check → Balance → Dispatch → Installation           │  references/crm-lifecycle-triggers.md
+  └─ POST-ORDER · Order journey (customer) ─────────────────────┘
+```
+
+### Pre-order — the lead journey (`lead-lifecycle-triggers.md`)
+
+Keyed to lead source and CRM lead status. Guide-not-gate, honesty-over-capture, no-silence — backed by the **30-minute follow-up**, **running Notes**, and **smart-skip** mechanics.
+
+| Trigger | Fires on | What it does |
+|---|---|---|
+| **L1** | Website form complete | Welcome + qualification (skips the pincode gate) |
+| **L2** | Fresh WhatsApp-button lead | Welcome → **Bangalore serviceability / pincode gate** → qualify |
+| **L3** | After YES / slot confirmed | Qualification: property → windows → style → site readiness |
+| **L4** | Site not ready | Capture timeline, offer an Experience-Centre visit, hold warmly |
+| **L5** | RNR / Unable to Contact | Re-engage — "pick one call-back window", no blame |
+| **L6** | Call Back / Follow-up-Later | Thank-you-for-your-time, then a reminder on the follow-up date |
+| **L7** | Appointment Booked | Confirm the free in-home consultation |
+| **L8** | Appointment today (1 hr before) | Reminder + decision-maker + experience video |
+| **L9** | Site Note Ready — Future | Hold, then an **early** readiness nudge (15d → Day 10 …) |
+| **L10** | Store Visit | Schedule an Experience-Centre visit |
+| **L11** | Not Interested | A gracious close, door left open |
+| **L12** | Less than ₹20K | Redirect to the Shivaji Nagar Experience Centre (threshold never named) |
+| **L13** | Existing-customer inbound | Menu re-entry by status — reschedule · book · talk to an expert · locate |
+
+### Post-order — the order lifecycle (`crm-lifecycle-triggers.md`, v1.1)
+
+Twelve word-tested messages that cure the *Silence After Advance*. Every message carries three payloads in order — **status → craft/care line → a bold, numbered `*Here are the NEXT STEPS:*` lookahead** — plus a named owner.
+
+| Trigger | Code | Milestone |
+|---|---|---|
+| **T1** | `order_confirmed` | Welcome + 7-step roadmap + 50% advance + fabric lock |
+| **T2** | `cm_scheduled` | Check-measure planned (installer named) |
+| **T3** | `cm_completed` | Measurements done & re-checked |
+| **T4** | `quotation_sent` | Scope of work + final quotation |
+| **T5** | `order_approved` | Components placed the same day |
+| **T6** | `crafting_started` | With the master tailors |
+| **T7** | `stitching_qc` | Stitched, now in quality check |
+| **T8** | `ready_balance_due` | Cleared QC — balance due |
+| **T9** | `payment_received` | Balance received |
+| **T10** | `dispatched` | On its way — handled with care |
+| **T11** | `install_scheduled` | Installation scheduled (installer messages 15 min before) |
+| **T12** | `install_completed` | Done + toll-free support + gentle referral |
+
+> A visual companion — both journeys as an annotated flow map for marketing review — can be regenerated on request.
+
+---
+
+## What's new — v1.2.0
+
+This release brings the repo up to date with the **full journey** above. See [`CHANGELOG.md`](CHANGELOG.md) for the detailed entry.
+
+- **Added** the pre-order lead journey (`lead-lifecycle-triggers.md`) — the prospect half of the journey was previously undocumented.
+- **Upgraded** the post-order library to **v1.1** with marketing's review applied: 50% advance named in T1; the two-step lookahead standardised to a bold, numbered `*Here are the NEXT STEPS:*` block across T2–T11; refreshed craft lines in T6–T8; and T12 now carries the Toll-Free line (+91-7795830298) and a referral, reconciled with the Voice of Brand's "share the experience, never refer-and-earn" rule.
+- **Restructured** the repo so `references/` ships as loose files at the root — browsable and diffable on GitHub, and `git clone` yields a working skill.
+- **`SKILL.md`** now treats the journey as two halves meeting at the consultation seam.
+
+**Open for marketing to close** (flagged in-file): lock one canonical site-completion timeline set; define what the referral "token of appreciation" is; resolve the `{type}` = "both" phrasing in T8–T12.
+
+---
+
 ## What you get when the skill is loaded
 
 Ask Claude any of these — once the skill is installed, it will respond as the Copy Studio:
