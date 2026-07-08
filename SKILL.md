@@ -76,6 +76,8 @@ You are governed by five canonical references. They are bundled with this skill 
 | Tone, words, language principles, what we say / don't say | `references/voice-of-brand.md` |
 | Picking source layer × AIDA stage × form for a piece of content | `references/the-real-content-matrix.md` |
 | A physical or operational moment (consultation, quote, advance, handover, installation, follow-up) | `references/service-brand-playbook.md` |
+| An automated **pre-order** WhatsApp message — a *prospect* enquiry, qualification, serviceability check, appointment booking, re-engagement, or lead-status reply (before any order exists) | `references/lead-lifecycle-triggers.md` |
+| An automated **post-order** CRM WhatsApp update in the order lifecycle (confirmation → check-measure → quote → production → QC → balance → dispatch → installation) | `references/crm-lifecycle-triggers.md` |
 | The bigger system — content layers, governance, 90-day operating rhythm | `references/content-system-summary.md` |
 | Smaller anchors (what each surface is for, what each emotional state needs) | `references/communication-surface-map.md`, `references/experience-state-map.md`, `references/copy-system.md`, `references/copy-studio-agent.md`, `references/service-recovery-system.md` |
 
@@ -214,6 +216,13 @@ When a brief touches any of these moments, read the relevant section of the play
 
 If a message can't carry these four, the message is incomplete.
 
+**The automated WhatsApp journey has two halves, and the Copy Studio owns both.**
+
+- **Post-order — the 12-trigger lifecycle library** (`references/crm-lifecycle-triggers.md`). 12 word-tested messages from `order_confirmed` to `install_completed` — the built form of Moment 4's "twelve standard messages" action item, and the cure for the Silence After Advance. Every message carries three payloads in order — **status → craft/care line → two-step lookahead** (rendered as a bold `*Here are the NEXT STEPS:*` header over a numbered list) — plus a named owner. When you must write a status a template doesn't cover (a delay, reschedule, partial dispatch), compose in that same anatomy; never fall back to a bare status.
+- **Pre-order — the lead lifecycle library** (`references/lead-lifecycle-triggers.md`). The *prospect* half: enquiry → serviceability check → qualification → appointment booked → re-engagement, keyed to lead source and lead status. Its three doctrine rules are **guide-not-gate, honesty-over-capture, no-silence**, backed by two CRM mechanics the copy depends on — the **30-minute follow-up** (what makes "we'll connect shortly" honest) and the **smart-skip rule** (never re-ask a collected detail). Use it whenever the customer is still a prospect with no order yet.
+
+The two libraries meet at the home consultation: the pre-order file books it; the visit produces the order and advance; `order_confirmed` (post-order T1) picks the customer up from there. When a brief touches any automated WhatsApp message, decide first which half you're in — prospect (pre-order) or paying customer (post-order) — then read that file.
+
 ---
 
 ## 7. The rejection list — revise the draft if any of these are true
@@ -313,6 +322,8 @@ The brand is not the logo. It is the lowest-quality moment in the customer's jou
 | `references/the-real-content-matrix.md` | 28-cell AIDA × Source matrix lookup |
 | `references/the-real-content-matrix.png` | Visual companion poster |
 | `references/service-brand-playbook.md` | The six moments, three spaces, choreography |
+| `references/lead-lifecycle-triggers.md` | The pre-order lead journey — enquiry → qualification → appointment booking + re-engagement, keyed to lead status |
+| `references/crm-lifecycle-triggers.md` | The 12 automated post-order WhatsApp lifecycle triggers — full template library + anatomy |
 | `references/content-system-summary.md` | The four-layer content system + 90-day rotation |
 | `references/copy-system.md` | Core definition of Hillarys as a service brand |
 | `references/copy-studio-agent.md` | The agent's identity statement |
