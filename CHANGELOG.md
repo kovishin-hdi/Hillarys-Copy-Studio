@@ -6,6 +6,37 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [1.3.0] — 2026-07-13
+
+Adds the **Order Journey Charter** — the customer-facing source of truth — and wires it through the skill as a fact-check layer. Until now the skill governed *how* we say things (voice, matrix, choreography, template anatomy) but had no canonical record of *what is true*. This release grounds every draft in the **"Your Order Journey" leaflet** the customer is actually handed, closing the gap between what we tell the customer on paper and what our messages say.
+
+### Added
+- `references/order-journey-charter.md` **(new)** — the **customer-facing source of truth**, drawn from the "Your Order Journey" leaflet:
+  - The **eight journey stages** with the leaflet's named owner for each (Home Consultation → Quotation → Price & Discount Freeze → 50% Advance/Order Processed → Manufacturing → Ready for Dispatch → Installation → After-Care & Warranty).
+  - The **three-stage payment schedule** — a **5% / ₹5,000 token "price & discount freeze"** *before* the 50% advance (previously absent from the skill), then the 50% balance — with the rule that the token does **not** process the order and procurement is **split** (curtains/Roman fabric same-day; other blinds & components after check-measurement).
+  - The **canonical facts** copy must not contradict — indicative quote (~90–95%, valid 15 days), **15 working days from check-measurement** (longer for motorised/imported), no changes/cancel/refund after the 50%, one install visit (re-visit chargeable), 48-hour defect window, warranty = manufacturing defects only.
+  - The **owner roster + escalation matrix** (Level 1 DC / CSR-MMT / CSR-CRM / Installation Manager, Level 2 ASM/SM, Level 3 Customer Service — orders@hillarys.co.in / 090082 81888).
+  - The **Commitment**, verbatim — *"you shouldn't have to chase us for status updates"* and *"every person who visits your home will be introduced to you in advance, by name"* — cited as the primary source for the anti-silence and ownership-visibility doctrines.
+  - A **leaflet → CRM-trigger mapping table** and a **How the Copy Studio uses this file** section (the fact-check discipline).
+- `references/order-journey-leaflet.pdf` **(new)** — the leaflet itself, the primary-source document the Charter is drawn from.
+
+### Changed
+- `SKILL.md`:
+  - §3 operating stack now lists `order-journey-charter.md` as the **fact source**, explicitly distinct from the voice sources, with a note that any draft stating a number/timeline/owner/rule must match it.
+  - §6 reframed so both journey halves narrate **one map the customer holds**, citing the leaflet's two Commitment lines as the written origin of the anti-silence and ownership rules.
+  - §7 rejection list gains a failure condition: a draft that **contradicts the Charter**.
+  - §8: the refusal to promise "15-day delivery" now cites the true figure (15 *working* days from *check-measurement*).
+  - §12 reference index updated with the charter and the leaflet PDF.
+- `README.md`: new "map underneath both journeys" subsection, a v1.3.0 "What's new," an enforcement-table row for leaflet consistency, and the repository structure updated.
+
+### Notes — open decisions surfaced (for Operations & Marketing)
+- **CRM Trigger 1's procurement line is broader than the leaflet.** T1 says all fabrics are procured today; the leaflet orders only curtains/Roman fabric same-day and everything else after check-measurement, and the real hard rule is *no changes at all* after the 50%. Recommend revising T1.
+- **The 5% / ₹5,000 token freeze is not narrated in WhatsApp** — it is the customer's first payment and currently a silent step. Recommend a `price_frozen` trigger in the standard anatomy.
+- **Two support numbers coexist** — leaflet 090082 81888 vs CRM Toll-Free +91-7795830298. Confirm which is canonical for which purpose.
+- **Public timeline wording** needs one approved phrasing across sales, lifecycle, and marketing (e.g. "made to measure in about three weeks").
+
+---
+
 ## [1.2.0] — 2026-07-07
 
 Brings the repository up to date with the full customer-journey lifecycle. The post-order library (previously local-only) is now published, upgraded to v1.1 with marketing's review applied, and joined by a new pre-order lead-journey library — so the skill now covers enquiry → qualification → appointment → consultation → order → production → dispatch → installation, end to end.

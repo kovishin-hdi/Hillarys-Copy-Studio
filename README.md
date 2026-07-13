@@ -80,9 +80,33 @@ Twelve word-tested messages that cure the *Silence After Advance*. Every message
 
 > A visual companion — both journeys as an annotated flow map for marketing review — can be regenerated on request.
 
+### The map underneath both journeys — the Order Journey Charter (`order-journey-charter.md`)
+
+The messages above are *how we say things*. Underneath them sits the **customer-facing document that says what is true** — the **"Your Order Journey" leaflet** every customer is handed, captured for the skill as [`references/order-journey-charter.md`](references/order-journey-charter.md) (the leaflet itself ships alongside it as [`order-journey-leaflet.pdf`](references/order-journey-leaflet.pdf)).
+
+It is the **fact-check layer**: every WhatsApp trigger, quote note, consultation script, and service-recovery line must stay consistent with what the customer was already told on paper. A message that is beautifully on-voice but contradicts the leaflet is a broken promise wearing good copy. The Charter pins down:
+
+- **The three-stage payment schedule** — a **5% / ₹5,000 token "price & discount freeze"** *before* the 50% advance (the CRM library previously jumped straight to the 50%), then the 50% balance. The token freezes the price; it does **not** process the order.
+- **The real timeline** — 15 *working* days from *check-measurement* (longer for motorised/imported) — the true number behind the skill's refusal to promise "15-day delivery."
+- **The hard rules** — no changes/cancel/refund after the 50%; quote valid 15 days; one install visit (re-visit chargeable); 48-hour defect window; warranty = manufacturing defects only.
+- **The named-owner roster + escalation matrix** — Design Consultant → CSR/MMT → CSR/CRM → Installation Manager (Level 1), ASM/SM (Level 2), Customer Service (Level 3) — the roster the "name a person" rule draws from.
+- **The Commitment, verbatim** — *"you shouldn't have to chase us for status updates"* and *"every person who visits your home will be introduced to you in advance, by name."* The anti-silence mandate and the ownership rule, promised to the customer in writing.
+
+This is how the flywheel tightens: the skill no longer just writes in the right *voice* — it writes in a way that is provably consistent with the promise document in the customer's hand.
+
 ---
 
-## What's new — v1.2.0
+## What's new — v1.3.0
+
+This release adds the **Order Journey Charter** — the customer-facing source of truth — and wires it through the skill as a fact-check layer. See [`CHANGELOG.md`](CHANGELOG.md) for the detailed entry.
+
+- **Added** [`references/order-journey-charter.md`](references/order-journey-charter.md) and the source leaflet [`references/order-journey-leaflet.pdf`](references/order-journey-leaflet.pdf): the 8-stage journey, the 3-stage payment schedule, real timelines, hard rules, owner roster + escalation matrix, and the written Commitment.
+- **Wired** the Charter into `SKILL.md` — §3 operating stack (as the fact source, distinct from the voice sources), §6 (both journeys narrate one map the customer holds), §7 rejection list (a draft fails if it contradicts the Charter), §8 (the "15-day" refusal now cites the true number), and §12 reference index.
+- **Surfaced** four drifts between the leaflet and the current libraries as open decisions — the 5%/₹5,000 token step isn't narrated in WhatsApp; CRM Trigger 1's procurement line is broader than the leaflet's split-procurement rule; two support numbers coexist; and public timeline wording needs one approved phrasing.
+
+---
+
+## Previously — v1.2.0
 
 This release brings the repo up to date with the **full journey** above. See [`CHANGELOG.md`](CHANGELOG.md) for the detailed entry.
 
@@ -161,6 +185,8 @@ hillarys-copy-studio/
     ├── service-brand-playbook.md         ← Six moments, three spaces, choreography
     ├── lead-lifecycle-triggers.md        ← Pre-order lead journey (enquiry → qualification → appointment)
     ├── crm-lifecycle-triggers.md         ← 12 automated post-order WhatsApp triggers (order → install)
+    ├── order-journey-charter.md          ← Source of truth: 8 stages, payment schedule, timelines, rules, owners, Commitment
+    ├── order-journey-leaflet.pdf         ← The customer-facing "Your Order Journey" leaflet (primary source for the charter)
     ├── content-system-summary.md         ← Four-layer content stack + 90-day rotation
     ├── copy-system.md                    ← Core definition of the brand
     ├── copy-studio-agent.md              ← Agent identity statement
@@ -181,7 +207,8 @@ The Copy Studio holds these as non-negotiable:
 | Calm > hype. | Aggressive urgency, scarcity, and discount language rejected. |
 | Refined > loud luxury. | "Premium London-based brand," "most prestigious," etc. rewritten. |
 | Promises we can keep. | "15-day delivery" replaced with realistic timelines. |
-| Ownership visibility. | Every customer-facing message names a person and a next step. |
+| Ownership visibility. | Every customer-facing message names a person and a next step — from the Charter's owner roster, never "our team." |
+| Consistency with the leaflet. | Every fact — payment %, timeline, rule, owner — is checked against the Order Journey Charter so no message contradicts what the customer holds on paper. |
 | Wednesday Update doctrine. | Post-advance silence is the biggest brand risk — copy actively defends against it. |
 | AIDA × Source discipline. | Every visual brief mapped to one of 28 matrix cells before drafting. |
 | Voice modulation by stage. | Attention voice ≠ Action voice ≠ Post-install voice. The skill knows which is which. |
