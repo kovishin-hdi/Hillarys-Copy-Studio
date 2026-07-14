@@ -1,0 +1,421 @@
+<title>Hillarys Copy Studio — System Overview</title>
+<style>
+  :root {
+    --ground: #F9F7F5;
+    --surface: #FFFFFF;
+    --surface-2: #F2EDEE;
+    --ink: #2B2230;
+    --muted: #6F6376;
+    --plum: #4A2B52;
+    --plum-soft: #EDE4F0;
+    --brass: #A17E3F;
+    --brass-soft: #F3EADB;
+    --line: #E3DCE0;
+    --good: #3E6B4F;
+    --warn: #8A5A2B;
+    --serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, Consolas, "Cascadia Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #1F1A23;
+      --surface: #2A2330;
+      --surface-2: #342C3B;
+      --ink: #EDE6F0;
+      --muted: #A79BAE;
+      --plum: #C9A6D6;
+      --plum-soft: #3A2E42;
+      --brass: #D0A75C;
+      --brass-soft: #3C3226;
+      --line: #3B3242;
+      --good: #8FBF9F;
+      --warn: #D6A56A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #1F1A23; --surface: #2A2330; --surface-2: #342C3B;
+    --ink: #EDE6F0; --muted: #A79BAE; --plum: #C9A6D6; --plum-soft: #3A2E42;
+    --brass: #D0A75C; --brass-soft: #3C3226; --line: #3B3242;
+    --good: #8FBF9F; --warn: #D6A56A;
+  }
+  :root[data-theme="light"] {
+    --ground: #F9F7F5; --surface: #FFFFFF; --surface-2: #F2EDEE;
+    --ink: #2B2230; --muted: #6F6376; --plum: #4A2B52; --plum-soft: #EDE4F0;
+    --brass: #A17E3F; --brass-soft: #F3EADB; --line: #E3DCE0;
+    --good: #3E6B4F; --warn: #8A5A2B;
+  }
+
+  body { background: var(--ground); color: var(--ink); font-family: var(--sans); line-height: 1.6; margin: 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 96px; }
+
+  .eyebrow { font-family: var(--sans); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--brass); font-weight: 600; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; text-wrap: balance; color: var(--ink); }
+  h1 { font-size: clamp(34px, 6vw, 52px); margin: 14px 0 18px; }
+  h2 { font-size: clamp(24px, 4vw, 32px); margin: 0 0 6px; }
+  h3 { font-size: 19px; margin: 0 0 8px; }
+  p { margin: 0 0 14px; max-width: 68ch; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 60ch; }
+  section { margin-top: 72px; }
+  .sect-head { margin-bottom: 28px; }
+  .sect-head p { color: var(--muted); }
+  a { color: var(--plum); }
+  code { font-family: var(--mono); font-size: .85em; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; }
+
+  /* Hero */
+  header.hero { padding: 72px 0 0; }
+  .hero-quote { border-left: 3px solid var(--brass); padding: 4px 0 4px 20px; margin: 28px 0 0; font-family: var(--serif); font-size: 19px; font-style: italic; color: var(--muted); max-width: 56ch; }
+  .hero-quote cite { display: block; font-style: normal; font-family: var(--sans); font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; margin-top: 8px; color: var(--brass); }
+
+  /* Three layers */
+  .layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .layer { background: var(--surface); border: 1px solid var(--line); padding: 20px 20px 16px; }
+  .layer .tag { font-size: 11.5px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+  .layer h3 { font-size: 21px; margin: 6px 0 8px; }
+  .layer p { font-size: 14.5px; color: var(--muted); margin: 0; }
+  .layer.new { border-top: 3px solid var(--brass); }
+  .layer.new .tag { color: var(--brass); }
+
+  /* Flywheel */
+  .flywheel { background: var(--surface); border: 1px solid var(--line); padding: 28px 26px 22px; }
+  .fly-steps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; counter-reset: fly; }
+  .fly-step { flex: 1 1 150px; min-width: 150px; padding: 8px 22px 8px 0; position: relative; counter-increment: fly; }
+  .fly-step::before { content: counter(fly); font-family: var(--serif); font-size: 26px; color: var(--brass); display: block; }
+  .fly-step::after { content: "→"; position: absolute; right: 4px; top: 10px; color: var(--line); font-size: 20px; }
+  .fly-step:last-child::after { content: "↺"; color: var(--brass); }
+  .fly-step b { display: block; font-size: 14.5px; margin: 2px 0 3px; }
+  .fly-step span { font-size: 13px; color: var(--muted); line-height: 1.45; display: block; }
+  .fly-note { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+
+  /* Journey spine */
+  .spine { position: relative; padding-left: 34px; }
+  .spine::before { content: ""; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--plum), var(--brass)); opacity: .5; }
+  .stop { position: relative; margin-bottom: 30px; }
+  .stop::before { content: ""; position: absolute; left: -30px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--plum); }
+  .stop.brass::before { background: var(--brass); }
+  .stop h3 { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .stop h3 small { font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--muted); }
+  .stop > p { font-size: 14.5px; color: var(--muted); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+  .chip { font-size: 12.5px; background: var(--surface); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .chip b { color: var(--plum); font-weight: 600; }
+
+  .seam { background: var(--plum); color: #F6EFF8; padding: 22px 26px; margin: 4px 0 30px -34px; }
+  .seam .eyebrow { color: var(--brass); }
+  :root[data-theme="dark"] .seam, .seam { border-radius: 2px; }
+  @media (prefers-color-scheme: dark) { .seam { background: var(--plum-soft); color: var(--ink); } }
+  :root[data-theme="dark"] .seam { background: var(--plum-soft); color: var(--ink); }
+  :root[data-theme="light"] .seam { background: var(--plum); color: #F6EFF8; }
+  .seam h3 { color: inherit; margin-bottom: 4px; }
+  .seam p { color: inherit; opacity: .85; font-size: 14.5px; margin: 0; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; background: var(--surface); }
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); margin-top: 12px; }
+  th { text-align: left; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+  td { padding: 8px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td .code { font-family: var(--mono); font-size: 12px; color: var(--plum); white-space: nowrap; }
+  td:first-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* Payment strip */
+  .pay { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 12px; }
+  .pay-card { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--brass); padding: 16px 18px; }
+  .pay-card .amt { font-family: var(--serif); font-size: 28px; color: var(--plum); }
+  .pay-card .label { font-size: 11.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--brass); font-weight: 600; margin-bottom: 2px; }
+  .pay-card p { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+
+  /* Anatomy */
+  .anatomy { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .wa { background: var(--surface); border: 1px solid var(--line); padding: 20px; font-size: 14px; }
+  .wa .bubble { background: var(--surface-2); border-radius: 10px 10px 10px 2px; padding: 14px 16px; max-width: 42ch; }
+  .wa .bubble p { font-size: 13.5px; margin: 0 0 10px; }
+  .wa .bubble p:last-child { margin: 0; }
+  .anatomy-notes { display: flex; flex-direction: column; gap: 12px; }
+  .a-note { border-left: 3px solid var(--plum); padding: 2px 0 2px 14px; }
+  .a-note b { display: block; font-size: 14px; }
+  .a-note span { font-size: 13.5px; color: var(--muted); }
+
+  /* Facts grid */
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); padding: 16px 18px; }
+  .fact b { display: block; font-family: var(--serif); font-size: 17px; margin-bottom: 4px; }
+  .fact p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+  /* Enforce / refuse */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .rules { background: var(--surface); border: 1px solid var(--line); padding: 20px 22px; }
+  .rules h3 { font-size: 17px; }
+  .rules ul { margin: 10px 0 0; padding: 0 0 0 18px; font-size: 14px; }
+  .rules li { margin-bottom: 8px; }
+  .rules li b { font-weight: 600; }
+  .rules.ok h3 { color: var(--good); }
+  .rules.no h3 { color: var(--warn); }
+
+  /* Open decisions */
+  .open { border: 1px dashed var(--brass); background: var(--brass-soft); padding: 20px 24px; }
+  .open ol { margin: 8px 0 0; padding-left: 20px; font-size: 14px; }
+  .open li { margin-bottom: 8px; }
+
+  /* Prompts */
+  .prompts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .prompt { background: var(--surface); border: 1px solid var(--line); padding: 12px 16px; font-size: 13.5px; font-style: italic; color: var(--muted); }
+  .prompt::before { content: "\201C"; font-family: var(--serif); font-size: 22px; color: var(--brass); margin-right: 4px; font-style: normal; }
+
+  footer { margin-top: 80px; border-top: 1px solid var(--line); padding-top: 24px; font-size: 13px; color: var(--muted); }
+  footer .close { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink); max-width: 58ch; }
+
+  @media (max-width: 720px) {
+    .layers, .pay, .anatomy, .facts, .two-col, .prompts { grid-template-columns: 1fr; }
+    .fly-step { flex-basis: 100%; padding-right: 0; }
+    .fly-step::after { display: none; }
+    .seam { margin-left: -34px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Hillarys India · Copy Studio Skill · v1.3.0</div>
+    <h1>One brand voice, from first enquiry to the last ten feet.</h1>
+    <p class="lede">The Copy Studio is a communication intelligence system packaged as a Claude skill. It writes, reviews, and defends every customer-facing word Hillarys sends — governed by three layers: how we say things, when we say them, and what is true.</p>
+    <div class="hero-quote">
+      We do not sell products. We deliver confidence, comfort, transformation, and convenience.
+      <cite>— Voice of Brand</cite>
+    </div>
+  </header>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">The system</div>
+      <h2>Three layers, one promise</h2>
+      <p>Every draft passes through all three. The promise they defend together: <em>“we handle this so you don’t have to.”</em></p>
+    </div>
+    <div class="layers">
+      <div class="layer">
+        <div class="tag">Layer 1 · Voice</div>
+        <h3>How we say it</h3>
+        <p>Voice of Brand, the 28-cell AIDA × Source content matrix, and the Service Brand Playbook’s six moments. Calm over hype, refined over loud, guidance over selling.</p>
+      </div>
+      <div class="layer">
+        <div class="tag">Layer 2 · Journey</div>
+        <h3>When we say it</h3>
+        <p>Two automated WhatsApp libraries — 13 pre-order lead cases and 12 post-order lifecycle triggers — meeting at the home consultation. No customer ever waits in silence.</p>
+      </div>
+      <div class="layer new">
+        <div class="tag">Layer 3 · Truth — new in v1.3.0</div>
+        <h3>What is true</h3>
+        <p>The Order Journey Charter: the customer-facing leaflet as canonical fact base. Every percentage, timeline, owner, and rule in a draft must match what the customer was told on paper.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">Why it compounds</div>
+      <h2>The flywheel</h2>
+      <p>The layers don’t just coexist — they feed each other. Each turn of the loop makes the next message more trustworthy than the last.</p>
+    </div>
+    <div class="flywheel">
+      <div class="fly-steps">
+        <div class="fly-step"><b>Promise on paper</b><span>The “Your Order Journey” leaflet tells the customer the map, the money, the owners, the rules.</span></div>
+        <div class="fly-step"><b>Messages narrate it</b><span>The 13 lead cases and 12 lifecycle triggers walk the customer through that exact map, stage by stage.</span></div>
+        <div class="fly-step"><b>Every draft is checked</b><span>Voice check, rejection list, and — now — a fact check against the Charter before anything ships.</span></div>
+        <div class="fly-step"><b>Drift is surfaced</b><span>Where copy and leaflet disagree, the gap becomes a named open decision for marketing — never a silent fix.</span></div>
+        <div class="fly-step"><b>The system updates</b><span>Decisions close, libraries version up, and the tightened system governs the next thousand messages.</span></div>
+      </div>
+      <p class="fly-note">v1.3.0 closed the loop: before the Charter, the studio could write beautifully <em>on-voice</em> and still contradict the leaflet in the customer’s hand. Now consistency is enforced, and inconsistency becomes work items — four are open right now.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">The journey, end to end</div>
+      <h2>Two journeys, one seam</h2>
+      <p>A stranger becomes a prospect, a prospect becomes a customer, a customer becomes an advocate — and there is a message for every step.</p>
+    </div>
+
+    <div class="spine">
+      <div class="stop">
+        <h3>Pre-order — the lead journey <small>lead-lifecycle-triggers.md · L1–L13</small></h3>
+        <p>Guides a prospect from first enquiry to a booked home consultation. Doctrine: <b>guide, don’t gate</b> · <b>honesty over capture</b> · <b>no silence</b> — backed by the 30-minute follow-up and the smart-skip rule (never re-ask a collected detail).</p>
+        <div class="chips">
+          <span class="chip"><b>L1</b> Website form</span>
+          <span class="chip"><b>L2</b> WhatsApp lead + pincode gate</span>
+          <span class="chip"><b>L3</b> Qualification</span>
+          <span class="chip"><b>L4</b> Site not ready</span>
+          <span class="chip"><b>L5</b> RNR re-engage</span>
+          <span class="chip"><b>L6</b> Call-back hold</span>
+          <span class="chip"><b>L7</b> Appointment booked</span>
+          <span class="chip"><b>L8</b> Same-day reminder</span>
+          <span class="chip"><b>L9</b> Future requirement</span>
+          <span class="chip"><b>L10</b> Store visit</span>
+          <span class="chip"><b>L11</b> Not interested</span>
+          <span class="chip"><b>L12</b> Under ₹20K redirect</span>
+          <span class="chip"><b>L13</b> Existing-customer menu</span>
+        </div>
+      </div>
+
+      <div class="seam">
+        <div class="eyebrow">The seam</div>
+        <h3>The home consultation</h3>
+        <p>The pre-order library books the visit. The visit produces the order and the advance. The moment the advance clears, the post-order library picks the customer up — nobody falls between the two halves.</p>
+      </div>
+
+      <div class="stop brass">
+        <h3>Post-order — the order lifecycle <small>crm-lifecycle-triggers.md · T1–T12 · v1.1</small></h3>
+        <p>Twelve word-tested messages that cure the <b>Silence After Advance</b> — the single most damaging moment in the journey. A message at every state change, so the customer never has to chase us.</p>
+        <div class="table-scroll">
+          <table>
+            <tr><th>#</th><th>Trigger</th><th>Milestone</th></tr>
+            <tr><td>T1</td><td><span class="code">order_confirmed</span></td><td>Welcome, named CRM, 7-step roadmap, fabric lock</td></tr>
+            <tr><td>T2</td><td><span class="code">cm_scheduled</span></td><td>Check-measure planned — installer named</td></tr>
+            <tr><td>T3</td><td><span class="code">cm_completed</span></td><td>Measurements done and re-checked</td></tr>
+            <tr><td>T4</td><td><span class="code">quotation_sent</span></td><td>Scope of work + final quotation</td></tr>
+            <tr><td>T5</td><td><span class="code">order_approved</span></td><td>Components placed the same day</td></tr>
+            <tr><td>T6</td><td><span class="code">crafting_started</span></td><td>With the master tailors</td></tr>
+            <tr><td>T7</td><td><span class="code">stitching_qc</span></td><td>Stitched, now in quality check</td></tr>
+            <tr><td>T8</td><td><span class="code">ready_balance_due</span></td><td>Cleared QC — balance due</td></tr>
+            <tr><td>T9</td><td><span class="code">payment_received</span></td><td>Balance received, ready for dispatch</td></tr>
+            <tr><td>T10</td><td><span class="code">dispatched</span></td><td>On its way — handled with care</td></tr>
+            <tr><td>T11</td><td><span class="code">install_scheduled</span></td><td>Installer messages 15 minutes before arriving</td></tr>
+            <tr><td>T12</td><td><span class="code">install_completed</span></td><td>Done — toll-free support + gentle referral</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="stop">
+        <h3>Underneath both — the money, as the customer was told it</h3>
+        <p>From the leaflet, now canonical in the Charter. Three payments, each doing one specific thing — and copy must never blur them.</p>
+        <div class="pay">
+          <div class="pay-card">
+            <div class="label">Token · Price freeze</div>
+            <div class="amt">5% / ₹5,000</div>
+            <p>Whichever is higher. Freezes the price version and agreed discount. Does <b>not</b> process the order or start procurement.</p>
+          </div>
+          <div class="pay-card">
+            <div class="label">Total advance</div>
+            <div class="amt">50%</div>
+            <p>Processes the order, schedules check-measurement, starts procurement. No changes, cancellation, or refund after this point.</p>
+          </div>
+          <div class="pay-card">
+            <div class="label">Balance</div>
+            <div class="amt">50%</div>
+            <p>Payable when products are ready for dispatch. Then installation is scheduled at the customer’s convenience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">The craft</div>
+      <h2>Anatomy of a lifecycle message</h2>
+      <p>A bare status update is a ticket system — the thing this brand exists to replace. Every message carries three payloads, in order, plus a named owner.</p>
+    </div>
+    <div class="anatomy">
+      <div class="wa">
+        <div class="bubble">
+          <p>Quick update {name} — fabric stitching is complete and your order is now in quality check.</p>
+          <p>Every seam, fold, and finish is being checked against our standards before it leaves us — nothing reaches your home until it’s right.</p>
+          <p><b>*Here are the NEXT STEPS:*</b><br>1. Once it clears QC, we share your balance and payment link.<br>2. On payment, we dispatch your order and arrange installation.</p>
+        </div>
+      </div>
+      <div class="anatomy-notes">
+        <div class="a-note"><b>1 · The status</b><span>What just happened, in plain, calm language. The fact the trigger exists to report.</span></div>
+        <div class="a-note"><b>2 · The craft line</b><span>One sentence that reframes logistics as handling and care. It’s what makes an operational update feel premium.</span></div>
+        <div class="a-note"><b>3 · The two-step lookahead</b><span>The anti-silence mechanism: the customer always knows what comes next, so uncertainty never has room to grow.</span></div>
+        <div class="a-note"><b>Always · A named owner</b><span>The message comes from a person — the CRM set up in T1 — never from “our team.” The leaflet promised this in writing.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">Layer 3 · The fact base</div>
+      <h2>The Order Journey Charter</h2>
+      <p>Sourced from the leaflet in every customer’s hand. These are the facts no draft may contradict — because the customer can point at the paper and say <em>“but you told me…”</em></p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>The quote is indicative</b><p>~90–95% accurate at consultation, valid 15 days. Final price is confirmed only after the check-measurement visit.</p></div>
+      <div class="fact"><b>The real timeline</b><p>15 <em>working</em> days from <em>check-measurement</em> — not calendar days from order. Longer for motorised or imported fabric. This is why marketing copy never promises “15-day delivery.”</p></div>
+      <div class="fact"><b>Procurement is split</b><p>Curtain and Roman-blind fabric is ordered the same day as the 50%. Other blinds, hardware, and components only after check-measurement confirms final specs.</p></div>
+      <div class="fact"><b>Installation rules</b><p>One visit is included; a re-visit is chargeable if the site isn’t ready. The customer inspects and signs the acknowledgement at installation.</p></div>
+      <div class="fact"><b>After-care window</b><p>Defects or damage reported within 48 hours, with photos, to orders@hillarys.co.in. Warranty covers manufacturing defects only.</p></div>
+      <div class="fact"><b>Who to reach</b><p>Level 1: Design Consultant / CSR / Installation Manager by stage. Level 2: ASM / Sales Manager. Level 3: Customer Service — the escalation ladder every recovery message routes along.</p></div>
+    </div>
+    <div class="hero-quote" style="margin-top:26px">
+      We’ll keep you informed at every stage — you shouldn’t have to chase us for status updates. Every person who visits your home will be introduced to you in advance, by name.
+      <cite>— The Commitment, from the customer-facing leaflet. The anti-silence mandate and the ownership rule, promised on paper.</cite>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">Governance</div>
+      <h2>What it enforces, what it refuses</h2>
+      <p>The studio is allowed to push back — that is the job. Every draft runs the rejection list before it ships.</p>
+    </div>
+    <div class="two-col">
+      <div class="rules ok">
+        <h3>Enforced on every draft</h3>
+        <ul>
+          <li><b>The handling test</b> — does this make “we handle this so you don’t have to” more true or less true?</li>
+          <li><b>Ownership visibility</b> — a named person and a clear next step, drawn from the Charter’s roster.</li>
+          <li><b>Fact consistency</b> — every %, timeline, owner, and rule matches the leaflet.</li>
+          <li><b>Voice by stage</b> — warm at attention, transparent through the wait, celebratory at handover, grateful after.</li>
+          <li><b>Calm over hype</b> — no urgency, scarcity, or discount pressure, ever.</li>
+        </ul>
+      </div>
+      <div class="rules no">
+        <h3>Refused outright</h3>
+        <ul>
+          <li><b>“15-day delivery”</b> in marketing — the true fact is 15 working days from check-measurement; say “about three weeks” or stay silent.</li>
+          <li><b>“Premium London-based brand”</b> — replaced with “50 years of European craftsmanship, now made in India.”</li>
+          <li><b>Discount-led campaigns</b> and loud-luxury language.</li>
+          <li><b>“Refer and earn ₹X”</b> — we invite people to share the experience, with a token of appreciation.</li>
+          <li><b>Unowned messages</b> — if no one stands behind it by name, it doesn’t send.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">The flywheel, turning</div>
+      <h2>Open decisions — v1.3.0</h2>
+      <p>The Charter surfaced four gaps between the leaflet and the current libraries. They’re flagged for marketing and operations, not silently patched — closing them is the next turn of the loop.</p>
+    </div>
+    <div class="open">
+      <ol>
+        <li><b>Trigger 1 over-claims procurement.</b> It says all fabrics are procured today; the leaflet splits procurement, and the real rule is broader — no changes at all after the 50%. Revise T1.</li>
+        <li><b>The token freeze is a silent step.</b> The customer’s first payment (5% / ₹5,000) has no WhatsApp message. Recommend a <span class="code">price_frozen</span> trigger in the standard anatomy.</li>
+        <li><b>Two support numbers coexist.</b> The leaflet’s 090082 81888 and the CRM toll-free +91-7795830298. Confirm which is canonical for which purpose.</li>
+        <li><b>One public timeline phrasing.</b> Agree the approved wording — e.g. “made to measure in about three weeks” — so sales, lifecycle, and marketing all say the same true thing.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="sect-head">
+      <div class="eyebrow">Using it</div>
+      <h2>Ask naturally — the skill does the rest</h2>
+      <p>Installed from the repo, the studio triggers on any Hillarys communication task. Give it the situation, not just the task — it diagnoses emotional state, picks the matrix cell, drafts in voice, fact-checks against the Charter, and self-checks the rejection list.</p>
+    </div>
+    <div class="prompts">
+      <div class="prompt">Draft a Wednesday update for a customer in production week 2.</div>
+      <div class="prompt">A customer paid the advance 4 days ago and hasn’t heard from us. Write the message.</div>
+      <div class="prompt">Review this caption — is it on-brand?</div>
+      <div class="prompt">Write a Reel script for cold-traffic Instagram targeting Bangalore homeowners.</div>
+      <div class="prompt">A customer is angry about a delivery. Help me draft the service-recovery message.</div>
+      <div class="prompt">The customer is asking to change fabric after paying 50%. What can we honestly say?</div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="close">“The brand is not the logo. It is the lowest-quality moment in the customer’s journey. The Copy Studio exists so that no message you send is that moment.”</p>
+    <p>Hillarys India Copy Studio · Skill v1.3.0 · SKILL.md + 14 reference files, including the Order Journey Charter and the source leaflet · github.com/kovishin-hdi/Hillarys-Copy-Studio</p>
+  </footer>
+
+</div>
